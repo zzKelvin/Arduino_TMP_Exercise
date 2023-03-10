@@ -1,0 +1,31 @@
+int Temp;
+int pin_Buzina = 2;
+int pin_Led = 3;
+void setup()
+{
+  pinMode(pin_Buzina, OUTPUT);
+  pinMode(pin_Led, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  Temp = analogRead(A0);
+  Serial.print("Temperatura: ");
+  Serial.println(Temp);
+  if(Temp >= 166)
+  {
+    //ligar ventilador
+  }
+  if(Temp >= 205)
+  {
+    digitalWrite(pin_Buzina, HIGH);
+    digitalWrite(pin_Led, HIGH);
+  }
+  if(Temp <= 165)
+  {
+    digitalWrite(pin_Buzina, LOW);
+    digitalWrite(pin_Led, LOW);
+  }
+  delay(1000); 
+}
